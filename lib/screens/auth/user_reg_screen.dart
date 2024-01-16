@@ -10,9 +10,20 @@ class UserReg extends StatefulWidget {
 class _UserRegState extends State<UserReg> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-      child: Text("UserReg Screen"),
-    ));
+    return Scaffold(
+        body: SafeArea(
+            child: SingleChildScrollView(
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        width: double.infinity,
+        child: Column(children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+          ),
+          Image.asset('assets/himan.png')
+        ]),
+      ),
+    )));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:c_man_mobapp/screens/auth/login_screen.dart';
+import 'package:c_man_mobapp/screens/auth/user_reg_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cman',
-      home: LoginScreen(),
+      home: UserReg(),
     );
   }
 }
