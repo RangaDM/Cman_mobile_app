@@ -1,9 +1,9 @@
-import 'package:c_man_mobapp/screens/auth/login_screen.dart';
 import 'package:c_man_mobapp/screens/auth/user_reg_screen.dart';
+import 'package:c_man_mobapp/utils/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';
 
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: mobileBackgroundColor,
+      ),
       debugShowCheckedModeBanner: false,
       title: 'Cman',
       home: UserReg(),

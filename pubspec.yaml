@@ -27,3 +27,5 @@ flutter:
   assets:
     - assets/himan.png
     - assets/logoyellow.png
+    - assets/logoBlack.png
+    - assets/logowhite.png
