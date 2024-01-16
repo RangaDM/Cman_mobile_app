@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276567328487",
+    "project_id": "c-man-mobpro",
+    "storage_bucket": "c-man-mobpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276567328487:android:964ab33a079c6dfafc4442",
+        "android_client_info": {
+          "package_name": "com.example.c_man_mobapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaEgLJI-6DMkim_UQgqwPF6r9tEMI9e-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
