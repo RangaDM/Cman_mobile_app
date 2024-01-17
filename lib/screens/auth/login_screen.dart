@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: "Enter Email",
             ),
             const SizedBox(
-              height: 35,
+              height: 15,
             ),
 
             // password
