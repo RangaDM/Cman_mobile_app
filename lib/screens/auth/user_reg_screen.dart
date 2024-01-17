@@ -1,8 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:typed_data';
+
 import 'package:c_man_mobapp/screens/auth/login_screen.dart';
+import 'package:c_man_mobapp/services/auth_service.dart';
 import 'package:c_man_mobapp/utils/colors.dart';
+import 'package:c_man_mobapp/utils/util_function.dart';
 import 'package:c_man_mobapp/widgets/button.dart';
 import 'package:c_man_mobapp/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserReg extends StatefulWidget {
   const UserReg({super.key});
@@ -17,8 +24,58 @@ class _UserRegState extends State<UserReg> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _contctController = TextEditingController();
+  Uint8List? _profileImage;
+  bool isLoading = false;
+
+  final AuthMethodes _authMethodes = AuthMethodes();
+
+  void registerUser() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    String res = await _authMethodes.registerWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+      userName: _usernameController.text.trim(),
+      phoneNumber: _contctController.text.trim(),
+      address: _addressController.text.trim(),
+      propic: _profileImage!,
+    );
+
+    if (res == "User Registration Successful") {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()));
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(res),
+        ),
+      );
+    }
+  }
 
   @override
+  void dispose() {
+    super.dispose();
+    //dispose the controllers
+    _emailController.dispose();
+    _passwordController.dispose();
+    _usernameController.dispose();
+    _addressController.dispose();
+    _contctController.dispose();
+  }
+
+  void selectImage() async {
+    Uint8List _profileImage = await pickImage(ImageSource.gallery);
+    setState(() {
+      this._profileImage = _profileImage;
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
@@ -57,7 +114,7 @@ class _UserRegState extends State<UserReg> {
                         color: Colors.black38,
                         borderRadius: BorderRadiusDirectional.circular(30)),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: selectImage,
                       icon: const Icon(Icons.add_a_photo),
                       color: Colors.yellow.shade600,
                     ),
@@ -117,17 +174,21 @@ class _UserRegState extends State<UserReg> {
             controller: _contctController,
             isPassword: false,
             inputkeyboardType: TextInputType.emailAddress,
-            hintText: 'Enter your contact number',
+            hintText: 'Enter a contact number',
           ),
           const SizedBox(
             height: 15,
           ),
 
           // submit button
-          SubmitButton(
-            onPressed: () {},
-            text: 'Register',
-          ),
+          isLoading
+              ? const CircularProgressIndicator(
+                  color: primaryColor,
+                )
+              : SubmitButton(
+                  text: 'Register',
+                  onPressed: registerUser,
+                ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
