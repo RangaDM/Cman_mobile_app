@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   inputkeyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
                 //text feild for password
                 TextInputField(

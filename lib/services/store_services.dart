@@ -1,37 +1,36 @@
 import 'dart:typed_data';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:uuid/uuid.dart';
 
 class StorageMethodes {
-  FirebaseStorage _storage = FirebaseStorage.instance;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  //firebase storage  instance
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  //store the images in the firebase storage
+  //here we can store the profile images and post images from a single methode
 
   Future<String> uploadImage(
-      {required String path,
-      required bool isPost,
-      required Uint8List file}) async {
-    String res = "An error occured";
+      String floderName, bool isPost, Uint8List file) async {
+    //create a reference for the image here we also select the correct folder
+    Reference ref =
+        _storage.ref().child(floderName).child(_auth.currentUser!.uid);
 
-    try {
-      Reference ref = _storage.ref().child(path).child(_auth.currentUser!.uid);
+    //if the post
+    if (isPost) {
+      String postId = const Uuid().v4();
+      ref = ref.child(postId);
 
-      if (isPost) {
-        String postId = const Uuid().v4();
-        ref = ref.child(postId);
-      }
-
-      UploadTask uploadTask = ref.putData(file);
-      TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
-      String downloadUrl = await taskSnapshot.ref.getDownloadURL();
-
-      return downloadUrl;
-    } catch (e) {
-      res = e.toString();
-      // ignore: avoid_print
-      print(res);
+      //this will auto add this type userid/postid >> ref
     }
-    return res;
+    //upload the image to the firebase storage
+    UploadTask uploadTask = ref.putData(file);
+    //get the download url of the image from the snapshot
+    TaskSnapshot snapshot = await uploadTask;
+    String downloadUrl = await snapshot.ref.getDownloadURL();
+
+    //return the download url
+    return downloadUrl;
   }
 }

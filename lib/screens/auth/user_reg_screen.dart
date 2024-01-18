@@ -89,10 +89,10 @@ class _UserRegState extends State<UserReg> {
             // padding: EdgeInsets.only(right: 40),
             height: MediaQuery.of(context).size.height * 0.06,
           ),
-          // Image.asset(
-          //   'assets/logoyellow.png',
-          //   height: 150,
-          // ),
+          Image.asset(
+            'assets/logoyellow.png',
+            height: 150,
+          ),
           const SizedBox(
             height: 35,
           ),

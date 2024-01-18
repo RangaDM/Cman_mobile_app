@@ -41,11 +41,8 @@ class AuthMethodes {
           password: password,
         );
 
-        String photoURL = await StorageMethodes().uploadImage(
-          path: "profileImages",
-          isPost: false,
-          file: propic,
-        );
+        String photoURL = await StorageMethodes()
+            .uploadImage("ProfileImages", false, propic);
 
         UserModel user = UserModel(
           uid: userCredential.user!.uid,
