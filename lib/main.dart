@@ -1,4 +1,5 @@
 import 'package:c_man_mobapp/screens/auth/user_reg_screen.dart';
+import 'package:c_man_mobapp/screens/auth/welcome_page.dart';
 import 'package:c_man_mobapp/utils/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Cman',
-      home: UserReg(),
+      home: WelcomePage(),
     );
   }
 }
