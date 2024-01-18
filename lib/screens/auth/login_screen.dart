@@ -40,7 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const CmanProfile(),
+          builder: (context) =>
+              const CmanProfile(uid: "QPdEVAiLhuaZGqRWCsv9RdWTYVh2"),
         ),
       );
     } else {
