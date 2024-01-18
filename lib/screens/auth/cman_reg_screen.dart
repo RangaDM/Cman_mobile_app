@@ -17,6 +17,7 @@ class _CmanRegScnState extends State<CmanRegScn> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _stdnameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _contctController = TextEditingController();
   Uint8List? _profileImage;
@@ -87,7 +88,7 @@ class _CmanRegScnState extends State<CmanRegScn> {
           TextInputField(
             controller: _passwordController,
             isPassword: true,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.visiblePassword,
             hintText: 'Enter a password',
           ),
           const SizedBox(
@@ -98,7 +99,7 @@ class _CmanRegScnState extends State<CmanRegScn> {
           TextInputField(
             controller: _usernameController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.name,
             hintText: 'Username',
           ),
           const SizedBox(
@@ -107,9 +108,9 @@ class _CmanRegScnState extends State<CmanRegScn> {
 
           // Studio Name
           TextInputField(
-            controller: _usernameController,
+            controller: _stdnameController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.name,
             hintText: 'Studio Name',
           ),
           const SizedBox(
@@ -120,7 +121,7 @@ class _CmanRegScnState extends State<CmanRegScn> {
           TextInputField(
             controller: _addressController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.text,
             hintText: 'Enter your address',
           ),
           const SizedBox(
@@ -131,7 +132,7 @@ class _CmanRegScnState extends State<CmanRegScn> {
           TextInputField(
             controller: _contctController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.text,
             hintText: 'Enter a contact number',
           ),
           const SizedBox(

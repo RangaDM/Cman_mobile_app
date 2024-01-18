@@ -1,8 +1,10 @@
 import 'dart:typed_data';
+
 import 'package:c_man_mobapp/models/user_model.dart';
 import 'package:c_man_mobapp/services/store_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import '../models/user_model.dart' as user_model;
 
 class AuthMethodes {
@@ -78,27 +80,27 @@ class AuthMethodes {
     return res;
   }
 
-  Future<String> loginWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<String> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     String res = "An error occured";
 
     try {
+      //if the inputs are not empty
       if (email.isNotEmpty && password.isNotEmpty) {
-        final UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
+        //login the user with email and password
+        await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
 
-        if (userCredential.user != null) {
-          res = "Login Successful";
-        } else {
-          res = "Login Failed";
-        }
+        res = "success";
       } else {
-        res = "Please fill all the fields";
+        res = "Please enter email and password";
       }
-    } on FirebaseAuthException catch (error) {
+    }
+
+    //catch the errors extra error handling
+    on FirebaseAuthException catch (error) {
       if (error.code == "invalid-email") {
         res = "Invalid email";
       } else if (error.code == "weak-password") {
@@ -106,12 +108,14 @@ class AuthMethodes {
       } else if (error.code == "email-already-in-use") {
         res = "Email already in use";
       }
-    } catch (e) {
-      res = e.toString();
+    } catch (error) {
+      res = error.toString();
     }
+
     return res;
   }
 
+  //sign out
   Future<void> signOut() async {
     await _auth.signOut();
   }

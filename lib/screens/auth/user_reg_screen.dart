@@ -89,10 +89,10 @@ class _UserRegState extends State<UserReg> {
             // padding: EdgeInsets.only(right: 40),
             height: MediaQuery.of(context).size.height * 0.06,
           ),
-          Image.asset(
-            'assets/logoyellow.png',
-            height: 150,
-          ),
+          // Image.asset(
+          //   'assets/logoyellow.png',
+          //   height: 150,
+          // ),
           const SizedBox(
             height: 35,
           ),
@@ -140,7 +140,7 @@ class _UserRegState extends State<UserReg> {
           TextInputField(
             controller: _passwordController,
             isPassword: true,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.visiblePassword,
             hintText: 'Enter a password',
           ),
           const SizedBox(
@@ -151,7 +151,7 @@ class _UserRegState extends State<UserReg> {
           TextInputField(
             controller: _usernameController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.name,
             hintText: 'Username',
           ),
           const SizedBox(
@@ -162,7 +162,7 @@ class _UserRegState extends State<UserReg> {
           TextInputField(
             controller: _addressController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.text,
             hintText: 'Enter your address',
           ),
           const SizedBox(
@@ -173,7 +173,7 @@ class _UserRegState extends State<UserReg> {
           TextInputField(
             controller: _contctController,
             isPassword: false,
-            inputkeyboardType: TextInputType.emailAddress,
+            inputkeyboardType: TextInputType.text,
             hintText: 'Enter a contact number',
           ),
           const SizedBox(
