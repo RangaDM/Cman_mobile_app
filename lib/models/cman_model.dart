@@ -1,4 +1,4 @@
-class UserModel {
+class CmanModel {
   final String uid;
   final String username;
   final String email;
@@ -12,7 +12,7 @@ class UserModel {
   final String userRole = "user";
 
 // ignore: sort_constructors_first
-  UserModel({
+  CmanModel({
     required this.uid,
     required this.username,
     required this.email,
@@ -43,8 +43,8 @@ class UserModel {
   }
 
 // when we get data from firebase we get it in the form of map
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory CmanModel.fromJson(Map<String, dynamic> json) {
+    return CmanModel(
       uid: json['uid'] as String,
       username: json['username'] as String,
       email: json['email'] as String,
