@@ -1,4 +1,4 @@
-import 'package:c_man_mobapp/screens/auth/welcome_page.dart';
+import 'package:c_man_mobapp/screens/auth/user_profile.dart';
 import 'package:c_man_mobapp/utils/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Cman',
-      home: WelcomePage(),
+      home: UserProfile(
+        uid: "FigwdXBM8WR37n7Y6LvoVCj846x2",
+      ),
     );
   }
 }
